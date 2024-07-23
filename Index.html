@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI API Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .data {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .animate-pulse-slow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">AI API Admin Dashboard</div>
+        <div class="text-sm">Welcome, Admin</div>
+    </header>
+    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card animate-pulse-slow">
+            <div class="card-title">API Requests</div>
+            <div class="data">1,234</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Users Using API</div>
+            <div class="data">567</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Prompts</div>
+            <div class="data">890</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Models Used</div>
+            <div class="data">GPT-4, BERT</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Active Connections</div>
+            <div class="data">76</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Errors</div>
+            <div class="data">2</div>
+        </div>
+    </div>
+    <script>
+        // Custom JavaScript for interactivity and additional animations if needed
+        // Example: Real-time data update simulation
+        setInterval(() => {
+            const dataElements = document.querySelectorAll('.data');
+            dataElements.forEach(element => {
+                const randomValue = Math.floor(Math.random() * 1000);
+                element.textContent = randomValue;
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
