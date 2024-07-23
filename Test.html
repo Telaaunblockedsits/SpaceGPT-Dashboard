@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI API Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0D0D0D;
+            color: #E5E5E5;
+        }
+        .card {
+            background: #1A1A1A;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .data {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header .welcome {
+            font-size: 1rem;
+        }
+        .chart-container, .table-container {
+            background: #1A1A1A;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .table th {
+            background: #2E2E2E;
+        }
+        .table tr:nth-child(even) {
+            background: #2A2A2A;
+        }
+        .table tr:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <div class="logo">AI API Dashboard</div>
+            <div class="welcome">Good afternoon, Admin!</div>
+            <div class="welcome">July 20th, 2024</div>
+        </div>
+        <div class="grid grid-cols-1 gap-4 mt-4">
+            <div class="card">
+                <div class="card-title">Total Requests</div>
+                <div class="data">1.1M</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Credits Used</div>
+                <div class="data">1126</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Minute Limits</div>
+                <div class="data">Free: 5, Pro: 20, Business: 40, Enterprise: 100</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Daily Limits</div>
+                <div class="data">Free: 500, Pro: 3000, Business: 6000, Enterprise: 15000</div>
+            </div>
+        </div>
+        <div class="chart-container mt-4">
+            <div class="card-title">Usage Chart</div>
+            <canvas id="usageChart" height="150"></canvas>
+        </div>
+        <div class="table-container mt-4">
+            <div class="card-title">Usage by Hour</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hour</th>
+                        <th>Usage Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>12AM</td><td>93</td></tr>
+                    <tr><td>1AM</td><td>82</td></tr>
+                    <tr><td>2AM</td><td>109</td></tr>
+                    <tr><td>3AM</td><td>31</td></tr>
+                    <tr><td>4AM</td><td>130</td></tr>
+                    <tr><td>5AM</td><td>28</td></tr>
+                    <tr><td>6AM</td><td>12</td></tr>
+                    <tr><td>7AM</td><td>24</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('usageChart').getContext('2d');
+        const usageChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['9PM', '11PM', '1AM', '3AM', '5AM', '7AM'],
+                datasets: [{
+                    label: 'Usage',
+                    data: [120, 60, 90, 30, 150, 80],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#E5E5E5' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#E5E5E5' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
